@@ -1,0 +1,434 @@
+$btnColor: #fff;
+$btnColorDark: #809ac7; 
+$linkColor: #736b66;
+$linkColorHover: #9e7358;
+$textColor: #162229;
+$logoColor: #809ac7;
+$lightColor:#e9f0f2;
+$footerH: 25;
+$headerH: 31;
+$settingsH: 25;
+@mixin line-through-before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	right: 0;
+	height: 2px;
+	top: 50%;
+	margin-top: -1px;
+	background: red;
+}
+body{
+	font-size: 14px;
+	line-height: 1.3;
+	color: $textColor;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+.btn{
+	border: 1px solid $btnColorDark;
+	border-radius:0;
+}
+.mainLogo{
+	color: $textColor;		   
+    font-size: 25px;
+	span{
+		color: #fff;
+		background: $logoColor;		
+	}
+	padding: 0;
+	margin: 0;
+}
+.root-container{
+
+}
+.page-header{
+	border-bottom: 1px solid $lightColor;
+	background: #fff;
+	height: $headerH + px;
+	
+	.login-block{
+		margin-left: auto;
+		width: 70%;
+	}
+}
+.page-footer{
+	background: #fff;
+	height: $footerH + px;
+	background: #fff;
+	border-top: 1px solid $lightColor;
+}
+.page-content{
+	background: $lightColor;
+	> .container{	
+		position: relative;
+		z-index: 1;
+		border-right: 1px solid $lightColor;
+		border-left: 1px solid $lightColor;	
+		background: #fff;
+		> .row{
+			height: 100%;
+		}
+	}
+	.tasks-column{
+		position: absolute;
+		z-index: 10;
+		right: 0;
+		top: -30px;		
+		width: 300px;
+		
+		.tasks-value{
+			border: 2px solid $lightColor;
+			background: #fff;	
+			padding: 5px;	
+			position: relative;
+			z-index: 1;
+		}
+		.tasks-title{
+			cursor: pointer;
+			&:hover{
+				color: #000;
+			}
+			h5{
+				margin: 0;
+			}
+		}
+		.close-btn{
+			cursor: pointer;
+			position: absolute;
+			right: 10px;
+			top: 5px;
+		}
+	}
+	.image-column{
+		position: relative;
+		z-index: 4;
+		
+		.image-column__header{
+			border-bottom: 1px solid $lightColor;			
+		}
+		.image-column__footer{
+			position: absolute;
+			z-index: 2;
+			bottom: 0;
+			left: 0;
+			height: $settingsH + px;
+			right: 0;
+			border-top: 1px solid $lightColor;
+		}	
+		.image-column__content{
+			position: relative;
+			z-index: 2;
+			.image-parent{
+				display: inline-block;
+				vertical-align: top;
+				box-shadow: 0 0 6px rgba(0,0,0, 0.5);
+				position: relative;
+				z-index: 1;
+				.image-texts{
+					position: absolute;
+					z-index: 3;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					.image-text{
+						z-index: 1;
+						position: absolute;
+						> span{
+							display: inline-block;
+							vertical-align: top;
+							position: relative;
+							z-index: 1;
+						}
+						&.line-through > span:before{
+							@include line-through-before;							
+						}
+						&:hover{
+							outline: 1px solid $btnColorDark!important;
+							z-index: 5;
+							
+							.edit-btn{
+								display: inline-block;
+								vertical-align: top;								
+							}
+						}
+						.edit-btn{
+							display: none;
+						}
+						.image-text-info{
+							position: absolute;
+							z-index: 10;
+							top: 100%;
+							left: 0;
+							background: rgba(0,0,0,0.3);
+							padding: 5px;							
+							display: none;
+							color: $textColor;
+							font-size: 11px;
+							cursor: default;
+						}
+						&:hover{
+							.image-text-info{
+								display: block;
+							}
+						}
+					}
+					.editable-text-container{
+						position: absolute;
+						z-index: 10;
+						.editable-text-field-parent{
+							position: relative;
+							z-index: 1;
+							display: inline-block;
+							vertical-align: top;
+							&.line-through:before{
+								@include line-through-before;
+							}							
+						}
+						.editable-text-field{
+							resize: both;
+							margin: 0;
+							vertical-align: top;
+						}
+						.editable-text-header{
+							position: absolute;
+							z-index: 1;
+							bottom: 100%;
+							left: 0;						
+						}
+						.editable-text-footer{
+							position: absolute;
+							z-index: 1;
+							top: 100%;
+							left: 0;							
+						}
+						.editable-text-mess{
+							display: block;
+						}
+						.editable-color-value{
+							background: #fff;
+							border: 1px solid $btnColorDark;
+							.sketch-picker {
+								border-radius: 0!important;
+								padding: 5px!important;
+							}							
+						}
+						.group-item-label{
+							padding-left: 5px;
+							font-weight: bold;
+						}
+						.group-item-top{
+							padding: 0 5px;
+							font-weight: bold;
+						}
+						.editable-message-value{
+						}
+						.editable-left-side{
+							position: relative;
+						}
+						.editable-right-side{
+							position: absolute;
+							left: 100%;
+							top: 0;
+							margin-left: 5px;				
+						}
+					}
+					.messages-container{
+						background: #fff;
+						padding: 5px;
+						border: 1px solid $btnColorDark;
+					}
+				}
+			}
+		}
+	}
+}
+.user-info {
+	.user-photo{
+		margin-right: 5px;
+		i{
+			font-size: 20px;
+			border: 1px solid #ccc;
+			color: #ccc;
+			padding: 0 5px;
+			border-radius: 50%;
+			width: 30px;		
+		}
+	}
+}
+.messages-container{
+	min-width: 200px;
+	.messages-form textarea{
+		width: 100%;
+	}
+	.messages-list{
+		max-height: 300px;
+		overflow: auto;
+	}
+	.message{
+		background: $lightColor;
+		padding: 4px;
+		margin-bottom: 2px;
+		font-size: 13px;
+		border-bottom: 2px solid #fff;
+		.message-header{
+			border-bottom: 1px solid #fff;
+		}
+		.message-body{
+			background: #fff;
+			padding: 4px;
+		}
+		&.my-message{
+			border: 1px solid rgb(169, 169, 169);
+		}		
+	}
+}
+.editableFieldParent{
+	position: relative;
+	z-index: 2;
+	margin-right: 78px;
+	border: 1px dashed $btnColorDark;
+	&:hover{
+		border-style: dotted;
+	}
+	.btn{
+		position: absolute;
+		z-index: 4;
+		left: 100%;
+		top: -1px;
+		white-space: nowrap;
+	}
+	.editableFieldValue{
+		
+	}
+	.editableFieldField{
+		position: relative;
+		z-index: 3;
+		left: 0;
+		top: 0;		
+		right: 30px;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;				
+		resize: both;
+	}
+}
+.paginator{
+	display: flex;
+	position: relative;
+	z-index: 5;
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		li{
+			display: block;
+			padding: 2px;
+			
+			.page-item{
+				display: block;
+				height: 20px;
+				width: 20px;
+				border: 1px solid $btnColorDark;
+				text-decoration: none;
+				overflow: hidden;
+				position: relative;
+				z-index: 1;
+				img{
+					width: 100%;
+					height: auto;
+					position: absolute;
+					z-index: 1;
+					left: 0;
+					top: 0;
+					background: #fff;
+				}
+				span{
+					display: block;
+					position: absolute;
+					z-index: 2;
+					left: 0;
+					top: 0;
+					width: 100%;
+					text-align: center;
+					font-weight: bold;
+					font-size: 12px;
+					line-height: 20px;
+					color: #000;
+				}
+				&:hover{
+					overflow: visible;
+					z-index: 2;
+					img{
+						width: auto;
+						border: 1px solid $btnColorDark;
+						box-shadow: 0 0 3px rgba(0,0,0,0.5);
+					}
+				}
+			}
+			&.active .page-item{
+				border: 2px solid #000;
+			}
+		}
+	}
+}
+.task{
+	background: $lightColor;
+	border-bottom: 2px solid #fff;	
+	display: block;
+	text-decoration: none;
+	a{
+		color: $textColor;
+		display: block;
+		text-decoration: none;
+		padding: 5px;
+		&:hover{
+			outline: 2px solid $btnColorDark;
+		}
+	}	
+	> div{
+		padding: 5px;
+		outline: 2px solid $btnColorDark;
+	}
+}
+.task-item{
+	position: relative;
+	z-index: 1;	
+	color: $textColor;
+
+	.task-info{
+		position: absolute;
+		z-index: 1;
+		right: 5px;
+		top: 5px;
+	}
+	.task-name{
+		font-weight: bold;
+	}
+}
+.tasks-scroll{
+	max-height: 450px;
+	overflow: auto;
+}
+/*--------------*/
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 0;
+	background-color: #eee;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 0;	
+	background-color: #ccc;
+}
